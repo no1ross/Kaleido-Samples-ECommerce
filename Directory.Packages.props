@@ -11,8 +11,8 @@
         <PackageVersion Include="Kaleido.Provider.SQLite" Version="$(KaleidoVersion)" />
     </ItemGroup>
     <ItemGroup>
-        <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.31" />
-        <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.31" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.32" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.32" />
         <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
         <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.3.0" />
     </ItemGroup>
