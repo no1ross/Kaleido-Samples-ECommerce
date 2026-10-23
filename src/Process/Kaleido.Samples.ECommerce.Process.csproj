@@ -6,7 +6,7 @@
 </ItemGroup>
 
 <ItemGroup>
-	  <ProjectReference Include="..\..\..\src\Kaleido\Kaleido.csproj" />
+	  <PackageReference Include="Kaleido" />
 	  <ProjectReference Include="..\Data\Kaleido.Samples.ECommerce.Data.csproj" />
 	</ItemGroup>
 

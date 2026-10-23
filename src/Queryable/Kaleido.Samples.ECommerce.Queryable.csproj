@@ -3,7 +3,7 @@
 		<RootNamespace>Kaleido.Samples.ECommerce.Data</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\src\Kaleido\Kaleido.csproj" />
+	  <PackageReference Include="Kaleido" />
 	  <ProjectReference Include="..\Data\Kaleido.Samples.ECommerce.Data.csproj" />
 	</ItemGroup>
 

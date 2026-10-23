@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+    <File Path="nuget.config" />
+    <File Path="README.md" />
+    <File Path="AGENTS.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Data/Kaleido.Samples.ECommerce.Data.csproj" />
+    <Project Path="src/NetCoreApp/Kaleido.Samples.ECommerce.NetCoreApp.csproj" />
+    <Project Path="src/Process/Kaleido.Samples.ECommerce.Process.csproj" />
+    <Project Path="src/Queryable/Kaleido.Samples.ECommerce.Queryable.csproj" />
+    <Project Path="src/Shared/Kaleido.Samples.ECommerce.Shared.csproj" />
+  </Folder>
+</Solution>

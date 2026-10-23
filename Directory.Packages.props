@@ -1,0 +1,19 @@
+<Project>
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+        <!-- One version for every Kaleido package (they ship together). -->
+        <KaleidoVersion>1.0.0-preview-0423</KaleidoVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageVersion Include="Kaleido" Version="$(KaleidoVersion)" />
+        <PackageVersion Include="Kaleido.Http" Version="$(KaleidoVersion)" />
+        <PackageVersion Include="Kaleido.Observability.OpenTelemetry" Version="$(KaleidoVersion)" />
+        <PackageVersion Include="Kaleido.Provider.SQLite" Version="$(KaleidoVersion)" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.31" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.31" />
+        <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+        <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.3.0" />
+    </ItemGroup>
+</Project>
