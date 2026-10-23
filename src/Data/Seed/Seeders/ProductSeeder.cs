@@ -4,6 +4,8 @@ namespace Kaleido.Samples.ECommerce.Data.Seed.Seeders;
 
 internal sealed class ProductSeeder
 {
+    private static readonly Random Random = new(SeedSettings.RandomSeed);
+
     public static void Seed(
         ECommerceDbContext dbContext,
         IReadOnlyCollection<SupplierDefinition> suppliers)
@@ -29,16 +31,16 @@ internal sealed class ProductSeeder
                 supplierLookup[supplierName];
 
             //generate random number for family genreation
-            var numberOfFamilies = Random.Shared.Next(8, 20);
+            var numberOfFamilies = Random.Next(8, 20);
 
             var familyNames = FamilyNames
-                .OrderBy(_ => Random.Shared.Next())
+                .OrderBy(_ => Random.Next())
                 .Take(numberOfFamilies)
                 .ToArray();
 
             foreach (var familyName in familyNames)
             {
-                var numberOfModels = Random.Shared.Next(2, 25);
+                var numberOfModels = Random.Next(2, 25);
                 for (var model = 1; model <= numberOfModels; model++)
                 {
                     var modelName = $"Model {model}";
@@ -60,7 +62,8 @@ internal sealed class ProductSeeder
                                 CreateSku(
                                     supplierName,
                                     familyName,
-                                    modelName),
+                                    modelName,
+                                    products.Count + 1),
                             Description =
                                 CreateDescription(
                                     supplierName,
@@ -92,7 +95,8 @@ internal sealed class ProductSeeder
     private static string CreateSku(
         string supplier,
         string family,
-        string model)
+        string model,
+        int productNumber)
     {
         var supplierCode =
             supplier[..Math.Min(4, supplier.Length)]
@@ -107,7 +111,7 @@ internal sealed class ProductSeeder
                  .PadLeft(3, '0');
 
         return
-            $"{supplierCode}-{familyCode}-{modelNumber}-{Random.Shared.Next(100, 999)}";
+            $"{supplierCode}-{familyCode}-{modelNumber}-{productNumber:D5}";
     }
 
     private static string CreateDescription(
@@ -123,7 +127,7 @@ internal sealed class ProductSeeder
     {
         var price =
             Math.Pow(
-                Random.Shared.NextDouble(),
+                Random.NextDouble(),
                 2);
 
         return Math.Round(
@@ -134,28 +138,28 @@ internal sealed class ProductSeeder
 
     private static double GenerateRating()
         => Math.Round(
-            Random.Shared.NextDouble() * 2 + 3,
+            Random.NextDouble() * 2 + 3,
             1);
 
     private static int GenerateReviewCount()
-        => Random.Shared.Next(
+        => Random.Next(
             0,
             5000);
 
     private static DateTime GenerateCreatedDate()
         => DateTime.UtcNow.AddDays(
-            -Random.Shared.Next(
+            -Random.Next(
                 0,
                 3650));
 
     private static DateTime GenerateReleaseDate()
         => DateTime.UtcNow.AddDays(
-            -Random.Shared.Next(
+            -Random.Next(
                 0,
                 3650));
 
     private static bool GenerateIsActive() =>
-        Random.Shared.Next(1, 101) > 10;
+        Random.Next(1, 101) > 10;
 
     private static readonly string[] FamilyNames =
 [

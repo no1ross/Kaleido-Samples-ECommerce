@@ -4,6 +4,8 @@ namespace Kaleido.Samples.ECommerce.Data.Seed.Seeders;
 
 internal sealed class ProductCategoryAssignmentSeeder
 {
+    private static readonly Random Random = new(SeedSettings.RandomSeed);
+
     public static void Seed(
         ECommerceDbContext dbContext)
     {
@@ -38,8 +40,8 @@ internal sealed class ProductCategoryAssignmentSeeder
         {
             var categories =
                 leafCategories
-                    .OrderBy(_ => Random.Shared.Next())
-                    .Take(Random.Shared.Next(2, 5))
+                    .OrderBy(_ => Random.Next())
+                    .Take(Random.Next(2, 5))
                     .ToList();
 
             foreach (var product in family)

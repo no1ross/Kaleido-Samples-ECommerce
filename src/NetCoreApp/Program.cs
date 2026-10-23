@@ -66,9 +66,10 @@ using (var scope = app.Services.CreateScope())
 
 app.UseCors("AllowAll");
 
-//await ECommerceDbInitializer
-//    .InitializeAsync(
-//        app.Services);
+await ECommerceDbInitializer
+    .InitializeAsync(
+        app.Services,
+        reseed: args.Contains("--reseed"));
 
 app.MapKaleidoHttp();
 

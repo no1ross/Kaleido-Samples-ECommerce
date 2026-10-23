@@ -4,6 +4,8 @@ namespace Kaleido.Samples.ECommerce.Data.Seed.Seeders;
 
 internal sealed class InventorySeeder
 {
+    private static readonly Random Random = new(SeedSettings.RandomSeed);
+
     public static void Seed(
         ECommerceDbContext dbContext)
     {
@@ -42,7 +44,7 @@ internal sealed class InventorySeeder
     private static int GenerateQuantity()
     {
         var bucket =
-            Random.Shared.Next(
+            Random.Next(
                 1,
                 101);
 
@@ -50,17 +52,17 @@ internal sealed class InventorySeeder
         {
             <= 10 => 0,
 
-            <= 25 => Random.Shared.Next(1, 10),
+            <= 25 => Random.Next(1, 10),
 
-            <= 75 => Random.Shared.Next(10, 100),
+            <= 75 => Random.Next(10, 100),
 
-            _ => Random.Shared.Next(100, 500)
+            _ => Random.Next(100, 500)
         };
     }
 
     private static int GenerateReorderThreshold()
     {
-        return Random.Shared.Next(
+        return Random.Next(
             10,
             100);
     }

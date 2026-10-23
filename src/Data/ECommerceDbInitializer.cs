@@ -1,13 +1,17 @@
 using Kaleido.Samples.ECommerce.Data.Seed;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Kaleido.Samples.ECommerce.Data;
 
+/// <summary>
+/// Creates the catalog database and seeds it (deterministically, from <c>Assets/*.json</c>) when it
+/// does not exist yet; <paramref name="reseed"/> deletes it first, to start over.
+/// </summary>
 public static class ECommerceDbInitializer
 {
     public static async Task InitializeAsync(
-        IServiceProvider serviceProvider)
+        IServiceProvider serviceProvider,
+        bool reseed)
     {
         await using var scope =
             serviceProvider.CreateAsyncScope();
@@ -16,21 +20,14 @@ public static class ECommerceDbInitializer
             scope.ServiceProvider
                 .GetRequiredService<ECommerceDbContext>();
 
-        var recreateDatabase = true;
-
-        if (recreateDatabase)
+        if (reseed)
         {
             await dbContext.Database.EnsureDeletedAsync();
-
-            await dbContext.Database.EnsureCreatedAsync();
         }
-        else
+
+        if (await dbContext.Database.EnsureCreatedAsync())
         {
-            await dbContext.Database.MigrateAsync();
+            new ECommerceSeeder(dbContext).Seed();
         }
-
-        var seeder = new ECommerceSeeder(dbContext);
-
-        seeder.Seed();
     }
 }

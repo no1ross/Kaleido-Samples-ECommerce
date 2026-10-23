@@ -66,7 +66,7 @@ internal sealed class ECommerceSeeder
         var path =
             Path.Join(
                 AppContext.BaseDirectory,
-                "assets",
+                "Assets",
                 fileName);
 
         var json =
